@@ -2,6 +2,8 @@
 const request = require('sync-request'); 
 const readline = require('readline-sync');
 const chalk = require('chalk');
+const server = require('./code');
+
 
 // Variables
 const parseRate = 5000; // set to lower than 5000 requests per hour
@@ -21,6 +23,8 @@ URL = buildURL();
 currentSHA = checkSHA(URL);
 mainLoop();
 setInterval(mainLoop, parseRate);
+server.crea
+
 
 function mainLoop() {
     let latestSHA = checkSHA(URL);
