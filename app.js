@@ -23,7 +23,7 @@ URL = buildURL();
 currentSHA = checkSHA(URL);
 mainLoop();
 setInterval(mainLoop, parseRate);
-server.crea
+server.initiateServer();
 
 
 function mainLoop() {

@@ -4,7 +4,7 @@ const https = require('https'); // require initiates a module from node.js
 const dt = require('./customModule');
 const url = require('url');
 
-exports.initiateServer = function {
+exports.initiateServer = function () {
     http.createServer(function (req,res) { // create server with http module // req = client request
         res.writeHead(200, {'Content-type': 'text/html'}); // define header (200 = all OK)
         res.write("The date and time is currently: "+ dt.myDateTime()); // Output
@@ -14,5 +14,4 @@ exports.initiateServer = function {
         res.end("request made");
     }).listen(8080); // what port the server should listen to
 }
-
 
