@@ -65,6 +65,8 @@ function initMonitor() {
 
     currentSHA = checkSHA(url); // initiates currentSha value because checkCommit needs initial value
     setInterval(checkCommit, 5000); // Latter parameter is parserate
+
+    console.log("Monitoring "+repositoryName+"..."); // User feedback is always pog
 }
 
 function checkCommit() {
