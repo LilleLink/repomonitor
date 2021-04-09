@@ -19,9 +19,15 @@ function getFromTerminal(question) {
     return readline.question(question);
 }
 
+// Returns a simple JSON object with the repositories
+function getRepositories(username) {
+    var info = getJSON("https://api.github.com/users/"+username+"/repos", gitOptions);
+    return info;
+}
+
 //Prints list of repositories
 function listRepositories(username) {
-    var info = getJSON("https://api.github.com/users/"+username+"/repos", gitOptions);
+    var info = getRepositories();
     for (var i = 0; i < info.length; i++) {
         console.log(chalk.green(info[i].name));
     }
@@ -44,6 +50,16 @@ function checkSHA(urlpar) {
     info = info.find(item=>item.name=='master'); // Finds master branch
 
     return info.commit["sha"]; // Returns latest sha of master branch
+}
+
+// Function that initiates the gitOptions variable
+function initAPIOptions(token) {
+    gitOptions = {
+        headers: {
+            'User-Agent': 'request',
+            'Authorization': 'token '+token
+        }
+    };
 }
 
 // Initiates the repository-monitor
@@ -87,3 +103,5 @@ exports.getJson = getJSON;
 exports.getCommitAuthor = getCommitAuthor;
 exports.listRepositories = listRepositories;
 exports.getFromTerminal = getFromTerminal;
+exports.getRepositories = getRepositories;
+exports.initAPIOptions = initAPIOptions;

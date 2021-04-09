@@ -2,5 +2,5 @@
 const server = require('./server');
 const monitor = require('./repoMonitor'); 
 
-monitor.initMonitor();
+//monitor.initMonitor();
 server.initiateServer();
