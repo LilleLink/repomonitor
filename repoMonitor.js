@@ -62,7 +62,22 @@ function initAPIOptions(token) {
     };
 }
 
-// Initiates the repository-monitor
+// Function that initiates the URL to check commits from
+function initURL(username, reposName) {
+    url = "https://api.github.com/repos/"+username+"/"+reposName+"/branches"; // URL to check for branches
+}
+
+// Initiates the monitor in the web interface
+function initiate() {
+    if(gitOptions != null && url != null) {
+        currentSHA = checkSHA(url); // initiates currentSha value because checkCommit needs initial value
+        setInterval(checkCommit, 5000); // Latter parameter is parserate
+    } else {
+        console.log("Error, API header or URL invalid");
+    }
+}
+
+// Initiates the repository-monitor in the CLI interface
 function initMonitor() {
     // Gets the required information from the user to monitor a repository
     var apiToken = getFromTerminal("Enter API-token > ");
@@ -105,3 +120,5 @@ exports.listRepositories = listRepositories;
 exports.getFromTerminal = getFromTerminal;
 exports.getRepositories = getRepositories;
 exports.initAPIOptions = initAPIOptions;
+exports.initURL = initURL;
+exports.initiate = initiate;

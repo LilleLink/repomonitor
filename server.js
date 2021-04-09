@@ -16,14 +16,10 @@ exports.initiateServer = function (){
     app.post('/monitor', function(req, res) {
         var token = req.body.githubAPIToken;
         var username = req.body.githubUsername;
+        var reposName = req.body.githubRepository;
 
         monitor.initAPIOptions(token);
-
-        var repos = monitor.getRepositories(username);
-        var formatedRepos = [];
-        for (let i = 0; i < repos.length; i++) {
-            formatedRepos[i] = repos[i].name;
-        }
-        res.send(formatedRepos);
+        monitor.initURL(username, reposName);
+        monitor.initiate();
     });
 }
