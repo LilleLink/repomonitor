@@ -18,6 +18,10 @@ exports.initiateServer = function (){
         var username = req.body.githubUsername;
         var reposName = req.body.githubRepository;
 
+        console.log(token);
+        console.log(username);
+        console.log(reposName);
+
         monitor.initAPIOptions(token);
         monitor.initURL(username, reposName);
         monitor.initiate();
