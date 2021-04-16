@@ -36,6 +36,8 @@ function listRepositories(username) {
 //Returns the author of a git commit, given a specific SHA-code
 function getCommitAuthor(sha) {
     let commit = getJSON('https://api.github.com/repos/'+username+'/'+repositoryName+'/commits/'+sha, gitOptions);
+    console.log(username);
+    console.log(repositoryName);
     return commit.commit.author;
 }
 
@@ -63,10 +65,10 @@ function initAPIOptions(token) {
 }
 
 // Function that initiates the URL to check commits from
-function initURL(username, reposName) {
-    this.username = username;
+function initURL(userName, reposName) {
+    this.username = userName;
     this.repositoryName = reposName;
-    url = "https://api.github.com/repos/"+username+"/"+reposName+"/branches"; // URL to check for branches
+    url = "https://api.github.com/repos/"+userName+"/"+reposName+"/branches"; // URL to check for branches
 }
 
 // Initiates the monitor in the web interface
