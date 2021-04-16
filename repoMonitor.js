@@ -48,7 +48,6 @@ function getJSON(URL, gitoptions) {
 function checkSHA(urlpar) {
     var info = getJSON(urlpar, gitOptions); // HTTP request to get the info
     info = info.find(item=>item.name=='master'); // Finds master branch
-    console.log(urlpar);
 
     return info.commit["sha"]; // Returns latest sha of master branch
 }
@@ -65,8 +64,9 @@ function initAPIOptions(token) {
 
 // Function that initiates the URL to check commits from
 function initURL(username, reposName) {
+    this.username = username;
+    this.repositoryName = reposName;
     url = "https://api.github.com/repos/"+username+"/"+reposName+"/branches"; // URL to check for branches
-    console.log(url);
 }
 
 // Initiates the monitor in the web interface
