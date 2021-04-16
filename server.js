@@ -27,4 +27,3 @@ exports.initiateServer = function (){
         monitor.initiate();
     });
 }
-//lol
